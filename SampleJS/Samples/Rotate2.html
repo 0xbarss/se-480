@@ -1,0 +1,47 @@
+<html>
+<head>
+<style>
+#myDiv1{
+  width: 350px;
+  height: 200px;
+  border:2px solid green;
+}
+#myDiv2{
+  width: 350px;
+  height: 200px;
+  border:2px solid green;
+}
+</style>
+</head>
+<body onLoad="pageLoaded()">
+<center>
+<a href="#" onclick="selectedImage()">
+<div id="myDiv1"></div>
+</a>
+</br></br>
+<div id="myDiv2"></div>
+</center>
+</body>
+<script language = "JavaScript">
+var i=0;  
+var array=["1.jpg","2.jpg", "3.jpg"];
+
+function pageLoaded() {
+	setInterval('moveRight()',2000);
+}
+
+function selectedImage(){
+	var x = array[i].toString();
+	document.getElementById("myDiv2").style.backgroundImage = "url('"+x+"')";
+}
+ 
+function moveRight(){
+	i=i+1;
+	if(i>array.length-1){
+		i=0;
+	}
+	var x = array[i].toString();
+	document.getElementById("myDiv1").style.backgroundImage = "url('"+x+"')";
+}             
+</script>
+</html>

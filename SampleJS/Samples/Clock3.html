@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic JavaScript Clock</title>
+    <style>
+        body {
+			background-color: lightgrey;
+            font-family: Arial;
+		}
+        
+        #clock {
+            font-size: 4rem; 
+            background-color: lightyellow;
+            color: lightblue;
+            padding: 20px;
+			width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+	<center>
+    <div id="clock" align="center"></div>
+	</center>
+    <script>
+        
+        function showTime() {
+            // 1. Get the current date and time
+            let date = new Date();
+            
+            // 2. Extract hours, minutes, and seconds
+            let h = date.getHours();    // 0 - 23
+            let m = date.getMinutes();  // 0 - 59
+            let s = date.getSeconds();  // 0 - 59
+            
+            // 3. Add leading zeros if the number is less than 10
+            h = addLeadingZero(h);
+            m = addLeadingZero(m);
+            s = addLeadingZero(s);
+            
+            // 4. Combine them into a string
+            let time = h + ":" + m + ":" + s;
+            
+            // 5. Display the time in the 'clock' div
+            // We use textContent for better performance and security
+            document.getElementById("clock").textContent = time;
+        }
+        
+        // Helper function to add a leading zero
+        function addLeadingZero(number) {
+            if (number < 10) {
+                return "0" + number;
+            }
+            return number;
+        }
+        
+        // --- Run the clock ---
+        
+        // 1. Run the showTime() function immediately to show the clock
+        //    without waiting for the first second.
+        showTime();
+        
+        // 2. Set an interval to run the showTime() function
+        //    every 1000 milliseconds (which is 1 second).
+        setInterval(showTime, 100);
+        
+    </script>
+
+</body>
+</html>

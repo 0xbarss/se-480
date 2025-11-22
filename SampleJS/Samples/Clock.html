@@ -1,0 +1,13 @@
+<html>
+<body onload="startTime()">
+<h2>JavaScript Clock</h2>
+<div id="saat"></div>
+<script>
+function startTime() {
+  const d = new Date();
+  document.getElementById('saat').innerHTML =  d;
+  setTimeout(startTime, 100);
+}
+</script>
+</body>
+</html>

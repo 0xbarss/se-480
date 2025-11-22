@@ -1,0 +1,19 @@
+<html>
+<head><title>The Images Array</title>
+<script language = "JavaScript">
+function mouseOnOff(imageNum,whichimg) {
+	document.images[imageNum].src = whichimg;
+}
+</script>
+</head>
+<body bgcolor="ffffff">
+<a href="#"
+onmouseover="mouseOnOff(0,'Kungfu1.jpg')" onmouseout="mouseOnOff(0,'Kungfu2.jpg')">
+	<img src="Kungfu2.jpg" name="image1" height=400 width=600>
+</a>
+<a href="#" 
+onmouseover="mouseOnOff(1,'Kungfu2.jpg')" onmouseout="mouseOnOff(1,'Kungfu1.jpg')">
+	<img src="Kungfu1.jpg" name="image1" height=400 width=600>
+</a>
+</body>
+</html>

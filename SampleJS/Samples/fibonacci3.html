@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Fibonacci3</title>
+<script language = "JavaScript">
+var a=0, b=1, temp, i, lo, nf, n=0; 
+lo=parseInt(prompt("Enter your lower limit fibonacci:")); 
+nf=parseInt(prompt("Enter how many fibonaccis you want:"));   
+    for(i=0; ; i++)
+    {
+       if (a>=lo)
+	   {
+	   document.write("f"+i+": "+a+"<br>");
+	   n++;
+	   }
+	   temp = a + b;
+       a = b;
+       b = temp;
+	   if (n==nf)
+	   {
+	   break;
+	   }
+    }              
+</script>
+</head>
+<body bgcolor="lightyellow">
+</body>
+</html>

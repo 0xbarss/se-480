@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Fibonacci4</title>
+<script language = "JavaScript">
+var a=0, b=1, temp, i, lo, up; 
+lo=parseInt(prompt("Enter your lower limit fibonacci:")); 
+up=parseInt(prompt("Enter your upper limit fibonacci:"));   
+    for(i=0; ; i++)
+    {
+       if (a>=lo)
+	   {
+	   document.write("f"+i+": "+a+"<br>");
+	   }
+	   
+	   temp = a + b;
+       a = b;
+       b = temp;
+	   if (a>up)
+	   {
+	   break;
+	   }
+    }              
+</script>
+</head>
+<body bgcolor="lightyellow">
+</body>
+</html>

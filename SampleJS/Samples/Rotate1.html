@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var num=1;
+function cagir(){
+	setTimeout('degistir()',2000)
+}
+
+function degistir(){
+	num++; 
+	if (num>3) {num=1;}
+	document.resim.src=num+".jpg";
+	cagir();
+}
+function goster(){
+	document.resim1.src=num+".jpg";
+}
+</script>
+</head>
+<body onLoad="cagir()">
+<a href="#" onClick="goster()">
+<img name="resim" src="1.jpg"></a>
+<br>
+<img name="resim1" src=""></a>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>Validating a form (revised)</title>
+
+<script language = "JavaScript">
+function validate() {
+	userpc = document.thisForm.postcode.value;
+	userpc = userpc.toLowerCase();
+	if (userpc.substring(0,3) != "pl4") return false;
+	else return true;
+}
+</script>
+
+</head>
+
+<body bgcolor="ffffff">
+<form name="thisForm" method="post" action="https://www.w3schools.com/action_page.php"  onSubmit="return validate()">
+	Please type in your PostCode:<br>
+	<input type="text" name="postcode">
+	<input type="submit" value="check">
+</form>
+</body>
+</html>

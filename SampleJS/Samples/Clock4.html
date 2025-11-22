@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Clock & Date</title>
+    <style>
+        /* Optional: Basic styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center; /* Center the text inside the container */
+        }
+        
+        .clock-container {
+            background-color: #333;
+            color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        #clock {
+            font-size: 3rem; 
+            font-family: 'Courier New', Courier, monospace;
+            color: #0f0; /* Classic green digital look */
+        }
+        
+        /* NEW: Styling for the date */
+        #date {
+            font-size: 1.2rem;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ccc; /* A lighter gray for the date */
+            margin-top: 10px; /* Add some space between time and date */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock-container">
+        <div id="clock"></div>
+        
+        <div id="date"></div>
+    </div>
+
+
+    <script>
+        function updateClock() {
+            // Get the current date and time
+            let now = new Date();
+            
+            // --- TIME LOGIC ---
+            let h = now.getHours();
+            let m = now.getMinutes();
+            let s = now.getSeconds();
+            
+            h = addLeadingZero(h);
+            m = addLeadingZero(m);
+            s = addLeadingZero(s);
+            
+            let timeString = h + ":" + m + ":" + s;
+            document.getElementById("clock").textContent = timeString;
+            
+            // --- DATE LOGIC (NEW) ---
+            
+            // Arrays for day and month names
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            // Get the day of the week, day of the month, month, and year
+            let dayOfWeek = days[now.getDay()];
+            let dayOfMonth = now.getDate();
+            let month = months[now.getMonth()];
+            let year = now.getFullYear();
+            
+            // Combine them into a string
+            let dateString = `${dayOfWeek}, ${month} ${dayOfMonth}, ${year}`;
+            
+            // Display the date string
+            document.getElementById("date").textContent = dateString;
+        }
+        
+        function addLeadingZero(number) {
+            return number < 10 ? "0" + number : number;
+        }
+        
+        // --- Run the clock ---
+        updateClock(); // Run once immediately
+        setInterval(updateClock, 1000); // Update every second
+        
+    </script>
+
+</body>
+</html>

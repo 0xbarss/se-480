@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Fibonacci2</title>
+<script language = "JavaScript">
+var a=0, b=1, temp, i, limit; 
+a=parseInt(prompt("Enter your first fibonacci number:")); 
+b=parseInt(prompt("Enter your second fibonacci number::"));  
+limit=prompt("Enter how many fibonacci numbers you want to list:");  
+    document.write("f0: "+a+"<br>");
+    for(i=1; i < limit; i++)
+    {
+       temp = a + b;
+       a = b;
+       b = temp;
+       document.write("f"+i+": "+a+"<br>");
+    }              
+</script>
+</head>
+<body bgcolor="lightyellow">
+</body>
+</html>
