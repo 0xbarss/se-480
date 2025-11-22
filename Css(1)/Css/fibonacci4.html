@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+</head>
+<body>
+
+    <h1>Fibonacci Series</h1>
+    
+    <p>Enter a number</p>
+    
+    <input type="number" id="numberInput" placeholder="i.e. 10" min="1">
+    
+    <button id="generateButton">Generate</button>
+    
+    <hr>
+    
+    <div id="result" style="margin-top: 15px; font-weight: bold;">
+        <!-- Sonuç burada gösterilecek -->
+    </div>
+
+    <script>
+        // Gerekli HTML elementlerini seçiyoruz
+        const generateButton = document.getElementById('generateButton');
+        const numberInput = document.getElementById('numberInput');
+        const resultDiv = document.getElementById('result');
+
+        // Butona tıklandığında çalışacak fonksiyonu tanımlıyoruz
+        generateButton.addEventListener('click', function() {
+            // Kullanıcının girdiği değeri sayıya çeviriyoruz
+            const count = parseInt(numberInput.value);
+
+            // Girdinin geçerli olup olmadığını kontrol ediyoruz
+            if (isNaN(count) || count <= 0) {
+                resultDiv.textContent = 'Please enter a positive integer';
+                return; // Geçersizse işlemi durdur
+            }
+            
+            // Fibonacci serisini hesaplıyoruz
+            let fibonacciSeries = [];
+            let a = 0, b = 1;
+
+            for (let i = 0; i < count; i++) {
+                fibonacciSeries.push(a);
+                let temp = a + b;
+                a = b;
+                b = temp;
+            }
+
+            // Sonucu ekrana yazdırıyoruz
+            resultDiv.textContent = "Result: " + fibonacciSeries.join(', ');
+        });
+    </script>
+
+</body>
+</html>
+

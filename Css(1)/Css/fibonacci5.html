@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Daha modern bir font */
+            background-image: linear-gradient(to right top, #a2d2ff, #b0d9ff, #c1e0ff, #d3e7ff, #e6eeff); /* Hafif gradyan arka plan */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #333; /* Genel metin rengi */
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px; /* Daha geniş iç boşluk */
+            border-radius: 12px; /* Daha yuvarlak köşeler */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Daha belirgin gölge */
+            text-align: center;
+            max-width: 500px; /* Biraz daha geniş konteyner */
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.6); /* Hafif beyaz çerçeve */
+            backdrop-filter: blur(5px); /* Hafif bulanıklık efekti */
+        }
+
+        h1 {
+            color: #2c3e50; /* Koyu gri başlık */
+            margin-top: 0;
+            font-size: 2.2em; /* Daha büyük başlık */
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.1em; /* Biraz daha büyük paragraf metni */
+            margin-bottom: 25px;
+        }
+
+        input[type="number"] {
+            width: calc(80% - 20px); /* İç boşluğu hesaba katarak genişlik */
+            padding: 12px 15px; /* Daha fazla iç boşluk */
+            margin-top: 15px;
+            border: 2px solid #a2d2ff; /* Mavi çerçeve */
+            border-radius: 8px; /* Yuvarlak input köşeleri */
+            font-size: 1.1em;
+            text-align: center;
+            transition: border-color 0.3s ease; /* Çerçeve rengi geçiş efekti */
+            outline: none; /* Odaklanınca dış çizgiyi kaldır */
+        }
+
+        input[type="number"]:focus {
+            border-color: #007bff; /* Odaklanınca daha koyu mavi çerçeve */
+        }
+
+        button {
+            width: calc(85% - 20px); /* İç boşluğu hesaba katarak genişlik */
+            padding: 14px 20px;
+            background-image: linear-gradient(to right, #007bff, #0056b3); /* Gradyan buton */
+            border: none;
+            border-radius: 8px;
+            font-size: 1.15em;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.3s ease; /* Hover efekti geçişi */
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3); /* Hafif buton gölgesi */
+        }
+
+        button:hover {
+            transform: translateY(-2px); /* Buton biraz yukarı kalkar */
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4); /* Gölge daha belirginleşir */
+            background-image: linear-gradient(to right, #0056b3, #003d80); /* Daha koyu gradyan */
+        }
+
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e6f2ff; /* Açık mavi arka plan */
+            border-radius: 8px;
+            min-height: 60px; /* Biraz daha uzun sonuç kutusu */
+            line-height: 1.8;
+            color: #2a6a9b; /* Koyu mavi metin */
+            word-wrap: break-word;
+            border: 1px solid #cce0ff; /* Hafif mavi çerçeve */
+            font-size: 1.1em;
+            text-align: left; /* Metni sola hizala */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Fibonacci Series</h1>
+        <p>Please enter the number of Fibonacci's you want to display</p>
+        
+        <input type="number" id="numberInput" placeholder="i.e. 10" min="1">
+        
+        <button id="generateButton">Generate</button>
+        
+        <div id="result">
+            <!-- Sonuç burada gösterilecek --></div>
+    </div>
+
+    <script>
+        const generateButton = document.getElementById('generateButton');
+        const numberInput = document.getElementById('numberInput');
+        const resultDiv = document.getElementById('result');
+
+        generateButton.addEventListener('click', function() {
+            const count = parseInt(numberInput.value);
+
+            if (isNaN(count) || count <= 0) {
+                resultDiv.textContent = 'Please enter a positive integer';
+                resultDiv.style.color = '#dc3545'; /* Hata mesajı için kırmızı renk */
+                resultDiv.style.backgroundColor = '#f8d7da'; /* Hata mesajı için açık kırmızı arka plan */
+                resultDiv.style.borderColor = '#f5c6cb';
+                return;
+            }
+            
+            resultDiv.style.color = '#2a6a9b'; /* Normal sonuç rengi */
+            resultDiv.style.backgroundColor = '#e6f2ff'; /* Normal sonuç arka planı */
+            resultDiv.style.borderColor = '#cce0ff';
+
+            let fibonacciSeries = [];
+            let a = 0, b = 1;
+
+            for (let i = 0; i < count; i++) {
+                fibonacciSeries.push(a);
+                let temp = a + b;
+                a = b;
+                b = temp;
+            }
+
+            resultDiv.textContent = fibonacciSeries.join(', ');
+        });
+    </script>
+
+</body>
+</html>
+
