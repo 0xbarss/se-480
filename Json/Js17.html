@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>17. JSON Deep Copy</title>
+</head>
+<body>
+    <h2>17. JSON Deep Copy</h2>
+    <button onclick="deepCopy()">Deep Copy Yap</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function deepCopy() {
+        let orjinal = {
+            "ad": "Test",
+            "ayarlar": {
+                "tema": "koyu",
+                "dil": "tr"
+            },
+            "sayilar": [1, 2, 3]
+        };
+        
+        // Shallow copy (sığ kopya)
+        let shallowCopy = orjinal;
+        
+        // Deep copy (derin kopya) - JSON kullanarak
+        let deepCopy = JSON.parse(JSON.stringify(orjinal));
+        
+        // Orjinali değiştir
+        orjinal.ad = "Değişti";
+        orjinal.ayarlar.tema = "açık";
+        orjinal.sayilar.push(4);
+        
+        document.getElementById("sonuc").innerHTML = 
+            "Orjinal: " + JSON.stringify(orjinal) + "<br><br>" +
+            "Shallow Copy: " + JSON.stringify(shallowCopy) + "<br><br>" +
+            "Deep Copy: " + JSON.stringify(deepCopy);
+    }
+    </script>
+</body>
+</html>

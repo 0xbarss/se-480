@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>1. Basit JSON Oluşturma</title>
+</head>
+<body>
+    <h2>1. Basit JSON Oluşturma</h2>
+    <button onclick="jsonOlustur()">JSON Oluştur</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function jsonOlustur() {
+        let kisi = {
+            "ad": "Ali",
+            "yas": 25,
+            "meslek": "Mühendis"
+        };
+        
+        document.getElementById("sonuc").innerHTML = 
+            "Ad: " + kisi.ad + "<br>" +
+            "Yaş: " + kisi.yas + "<br>" +
+            "Meslek: " + kisi.meslek;
+    }
+    </script>
+</body>
+</html>

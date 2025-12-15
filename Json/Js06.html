@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>6. LocalStorage JSON</title>
+</head>
+<body>
+    <h2>6. LocalStorage ile JSON</h2>
+    <button onclick="kaydet()">JSON Kaydet</button>
+    <button onclick="getir()">JSON Getir</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function kaydet() {
+        let ayarlar = {
+            "tema": "koyu",
+            "dil": "tr",
+            "bildirim": true
+        };
+        
+        localStorage.setItem('kullaniciAyarlari', JSON.stringify(ayarlar));
+        document.getElementById("sonuc").innerHTML = "JSON localStorage'a kaydedildi";
+    }
+    
+    function getir() {
+        let kayitli = localStorage.getItem('kullaniciAyarlari');
+        if(kayitli) {
+            let ayarlar = JSON.parse(kayitli);
+            document.getElementById("sonuc").innerHTML = 
+                "Tema: " + ayarlar.tema + "<br>" +
+                "Dil: " + ayarlar.dil + "<br>" +
+                "Bildirim: " + (ayarlar.bildirim ? "Açık" : "Kapalı");
+        } else {
+            document.getElementById("sonuc").innerHTML = "Kayıtlı JSON bulunamadı";
+        }
+    }
+    </script>
+</body>
+</html>

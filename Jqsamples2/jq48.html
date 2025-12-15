@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div2").addClass("important blue");
+  });
+});
+</script>
+<style type="text/css">
+.important
+{
+font-weight:bold;
+font-size:xx-large;
+}
+.blue
+{
+color:blue;
+}
+</style>
+</head>
+<body>
+
+<div id="div1">Izmir Ekonomi Universitesi</div>
+<div id="div2">Muhendislik Fakültesi </div>
+<br>
+<button>Add CSS to second div</button>
+
+</body>
+</html>
+

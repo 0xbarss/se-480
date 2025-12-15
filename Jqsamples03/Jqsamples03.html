@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 JavaScript ve jQuery Örneği</title>
+    <script src="jq.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .example { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; }
+        h3 { margin-top: 0; }
+        button, input, select { margin: 5px; padding: 8px; }
+        .result { background: #f0f0f0; padding: 10px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>10 JavaScript ve jQuery Örneği</h1>
+    
+    <!-- Örnek 1: Butona Tıklama -->
+    <div class="example">
+        <h3>1. Butona Tıklama</h3>
+        <p>Butona tıklandığında mesaj gösterir.</p>
+        <button id="click-button">Tıkla</button>
+        <div class="result" id="click-result"></div>
+    </div>
+    
+    <!-- Örnek 2: Renk Değiştirici -->
+    <div class="example">
+        <h3>2. Renk Değiştirici</h3>
+        <p>Arkaplan rengini rastgele değiştirir.</p>
+        <button id="color-changer">Renk Değiştir</button>
+        <div class="result" id="color-result">Mevcut renk: beyaz</div>
+    </div>
+    
+    <!-- Örnek 3: Göster/Gizle -->
+    <div class="example">
+        <h3>3. Göster/Gizle</h3>
+        <p>Elementi gösterir veya gizler.</p>
+        <button id="toggle-button">Göster/Gizle</button>
+        <div id="toggle-element" style="background: yellow; padding: 15px; margin-top: 10px;">Bu element görünür</div>
+    </div>
+    
+    <!-- Örnek 4: Liste Ekleme -->
+    <div class="example">
+        <h3>4. Liste Ekleme</h3>
+        <p>Listeye yeni öğe ekler.</p>
+        <input type="text" id="item-input" placeholder="Öğe adı">
+        <button id="add-item">Ekle</button>
+        <ul id="item-list">
+            <li>Örnek öğe 1</li>
+            <li>Örnek öğe 2</li>
+        </ul>
+    </div>
+    
+    <!-- Örnek 5: Hesaplama -->
+    <div class="example">
+        <h3>5. Hesaplama</h3>
+        <p>İki sayıyı toplar.</p>
+        <input type="number" id="num1" placeholder="Sayı 1">
+        <input type="number" id="num2" placeholder="Sayı 2">
+        <button id="calculate">Topla</button>
+        <div class="result" id="calc-result">Sonuç: </div>
+    </div>
+    
+    <!-- Örnek 6: Zamanlayıcı -->
+    <div class="example">
+        <h3>6. Zamanlayıcı</h3>
+        <p>10 saniye geri sayım.</p>
+        <button id="start-timer">Başlat</button>
+        <button id="stop-timer">Durdur</button>
+        <div class="result" id="timer-result">Kalan süre: 10</div>
+    </div>
+    
+    <!-- Örnek 7: Form Doğrulama -->
+    <div class="example">
+        <h3>7. Form Doğrulama</h3>
+        <p>Boş alan kontrolü yapar.</p>
+        <input type="text" id="name-input" placeholder="Adınız">
+        <button id="validate-form">Doğrula</button>
+        <div class="result" id="validation-result"></div>
+    </div>
+    
+    <!-- Örnek 8: AJAX Simülasyonu -->
+    <div class="example">
+        <h3>8. AJAX Simülasyonu</h3>
+        <p>Sunucudan veri çeker (simüle edilmiş).</p>
+        <button id="fetch-data">Veri Getir</button>
+        <div class="result" id="ajax-result"></div>
+    </div>
+    
+    <!-- Örnek 9: Resim Değiştirici -->
+    <div class="example">
+        <h3>9. Resim Değiştirici</h3>
+        <p>Resimleri değiştirir.</p>
+        <button id="prev-image">Önceki</button>
+        <button id="next-image">Sonraki</button>
+        <div style="margin-top: 10px;">
+            <img id="image-display" src="https://picsum.photos/200/100?random=1" width="200" height="100">
+        </div>
+    </div>
+    
+    <!-- Örnek 10: Klavye Olayları -->
+    <div class="example">
+        <h3>10. Klavye Olayları</h3>
+        <p>Klavye tuşlarını algılar.</p>
+        <input type="text" id="key-input" placeholder="Buraya yazın">
+        <div class="result" id="key-result">Basılan tuş: </div>
+    </div>
+
+    <script>
+        // Örnek 1: Butona Tıklama
+        document.getElementById('click-button').addEventListener('click', function() {
+            document.getElementById('click-result').innerHTML = 'Butona tıklandı! Tarih: ' + new Date().toLocaleTimeString();
+        });
+        
+        // jQuery ile alternatif
+        $('#click-button').click(function() {
+            $('#click-result').append('<br>jQuery ile de tıklandı!');
+        });
+        
+        // Örnek 2: Renk Değiştirici
+        document.getElementById('color-changer').addEventListener('click', function() {
+            const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+            document.getElementById('color-result').innerHTML = 'Mevcut renk: ' + randomColor;
+        });
+        
+        // Örnek 3: Göster/Gizle
+        document.getElementById('toggle-button').addEventListener('click', function() {
+            const element = document.getElementById('toggle-element');
+            if (element.style.display === 'none') {
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        });
+        
+        // Örnek 4: Liste Ekleme
+        document.getElementById('add-item').addEventListener('click', function() {
+            const input = document.getElementById('item-input');
+            if (input.value.trim() !== '') {
+                const li = document.createElement('li');
+                li.textContent = input.value;
+                document.getElementById('item-list').appendChild(li);
+                input.value = '';
+            }
+        });
+        
+        // Örnek 5: Hesaplama
+        document.getElementById('calculate').addEventListener('click', function() {
+            const num1 = parseFloat(document.getElementById('num1').value) || 0;
+            const num2 = parseFloat(document.getElementById('num2').value) || 0;
+            const result = num1 + num2;
+            document.getElementById('calc-result').innerHTML = 'Sonuç: ' + result;
+        });
+        
+        // Örnek 6: Zamanlayıcı
+        let timer;
+        let timeLeft = 10;
+        
+        document.getElementById('start-timer').addEventListener('click', function() {
+            timeLeft = 10;
+            document.getElementById('timer-result').innerHTML = 'Kalan süre: ' + timeLeft;
+            
+            timer = setInterval(function() {
+                timeLeft--;
+                document.getElementById('timer-result').innerHTML = 'Kalan süre: ' + timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById('timer-result').innerHTML += ' - Zaman doldu!';
+                }
+            }, 1000);
+        });
+        
+        document.getElementById('stop-timer').addEventListener('click', function() {
+            clearInterval(timer);
+            document.getElementById('timer-result').innerHTML += ' (Durduruldu)';
+        });
+        
+        // Örnek 7: Form Doğrulama
+        document.getElementById('validate-form').addEventListener('click', function() {
+            const name = document.getElementById('name-input').value;
+            if (name.trim() === '') {
+                document.getElementById('validation-result').innerHTML = 'Hata: Ad alanı boş olamaz!';
+                document.getElementById('validation-result').style.color = 'red';
+            } else {
+                document.getElementById('validation-result').innerHTML = 'Başarılı: Hoş geldin ' + name + '!';
+                document.getElementById('validation-result').style.color = 'green';
+            }
+        });
+        
+        // Örnek 8: AJAX Simülasyonu
+        document.getElementById('fetch-data').addEventListener('click', function() {
+            document.getElementById('ajax-result').innerHTML = 'Veriler yükleniyor...';
+            
+            // Simüle edilmiş AJAX çağrısı
+            setTimeout(function() {
+                const fakeData = [
+                    { id: 1, name: 'Ahmet' },
+                    { id: 2, name: 'Mehmet' },
+                    { id: 3, name: 'Ayşe' }
+                ];
+                
+                let html = '<ul>';
+                fakeData.forEach(function(item) {
+                    html += '<li>ID: ' + item.id + ', İsim: ' + item.name + '</li>';
+                });
+                html += '</ul>';
+                
+                document.getElementById('ajax-result').innerHTML = html;
+            }, 1000);
+        });
+        
+        // jQuery ile AJAX simülasyonu
+        $('#fetch-data').click(function() {
+            $('#ajax-result').append('<br>jQuery ile de veri alındı!');
+        });
+        
+        // Örnek 9: Resim Değiştirici
+        let currentImage = 1;
+        document.getElementById('next-image').addEventListener('click', function() {
+            currentImage++;
+            document.getElementById('image-display').src = 'https://picsum.photos/200/100?random=' + currentImage;
+        });
+        
+        document.getElementById('prev-image').addEventListener('click', function() {
+            if (currentImage > 1) {
+                currentImage--;
+                document.getElementById('image-display').src = 'https://picsum.photos/200/100?random=' + currentImage;
+            }
+        });
+        
+        // Örnek 10: Klavye Olayları
+        document.getElementById('key-input').addEventListener('keyup', function(event) {
+            document.getElementById('key-result').innerHTML = 'Basılan tuş: ' + event.key + ' (Kod: ' + event.keyCode + ')';
+        });
+        
+        // jQuery ile klavye olayları
+        $('#key-input').keypress(function() {
+            $('#key-result').append('<br>jQuery ile de tuş algılandı!');
+        });
+    </script>
+</body>
+</html>

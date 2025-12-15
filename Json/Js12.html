@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>12. Form'dan JSON</title>
+</head>
+<body>
+    <h2>12. Form'dan JSON Oluşturma</h2>
+    Ad: <input type="text" id="ad"><br>
+    Soyad: <input type="text" id="soyad"><br>
+    Email: <input type="email" id="email"><br>
+    <button onclick="formdanJSON()">JSON Oluştur</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function formdanJSON() {
+        let kisi = {
+            ad: document.getElementById("ad").value,
+            soyad: document.getElementById("soyad").value,
+            email: document.getElementById("email").value,
+            tarih: new Date().toLocaleString()
+        };
+        
+        let json = JSON.stringify(kisi, null, 2);
+        document.getElementById("sonuc").innerHTML = 
+            "<pre>" + json + "</pre>";
+    }
+    </script>
+</body>
+</html>

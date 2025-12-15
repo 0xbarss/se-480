@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>9. Nested JSON</title>
+</head>
+<body>
+    <h2>9. İç İçe JSON</h2>
+    <button onclick="nestedJSON()">Nested JSON Göster</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function nestedJSON() {
+        let firma = {
+            "ad": "ABC Şirketi",
+            "adres": {
+                "sehir": "İstanbul",
+                "ilce": "Kadıköy",
+                "cadde": "Bağdat Caddesi"
+            },
+            "calisanlar": [
+                {"ad": "Ali", "pozisyon": "Müdür"},
+                {"ad": "Veli", "pozisyon": "Geliştirici"}
+            ]
+        };
+        
+        document.getElementById("sonuc").innerHTML = 
+            "Firma: " + firma.ad + "<br>" +
+            "Şehir: " + firma.adres.sehir + "<br>" +
+            "Çalışan 1: " + firma.calisanlar[0].ad + " - " + firma.calisanlar[0].pozisyon;
+    }
+    </script>
+</body>
+</html>

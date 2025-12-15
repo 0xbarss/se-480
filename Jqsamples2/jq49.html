@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("h1,h2,p").removeClass("blue");
+  });
+});
+</script>
+<style type="text/css">
+.important
+{
+font-weight:bold;
+font-size:xx-large;
+}
+.blue
+{
+color:blue;
+font-size:xx-large;
+}
+</style>
+</head>
+<body>
+
+<h1 class="blue">Izmir Ekonomi Universitesi</h1>
+<h2 class="blue">Muhendislik Fakültesi</h2>
+<p class="blue">Yazılım Mühendisliği Bölümü</p>
+<p class="important">Senem Kumova Metin</p>
+<br>
+<button>Remove class from elements</button>
+</body>
+</html>
+

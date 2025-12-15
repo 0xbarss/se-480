@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>20. Kompleks JSON</title>
+</head>
+<body>
+    <h2>20. Kompleks JSON Yapısı</h2>
+    <button onclick="kompleksJSON()">Kompleks JSON Göster</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function kompleksJSON() {
+        let proje = {
+            "id": 101,
+            "ad": "E-Ticaret Sitesi",
+            "durum": "devam",
+            "bütçe": 50000,
+            "baslangic": "2023-01-15",
+            "takim": [
+                {
+                    "ad": "Ali",
+                    "rol": "Geliştirici",
+                    "görevler": ["backend", "API"]
+                },
+                {
+                    "ad": "Ayşe",
+                    "rol": "Tasarımcı",
+                    "görevler": ["UI", "UX"]
+                }
+            ],
+            "miletaşlar": [
+                {"ad": "Tasarım", "tamamlandi": true},
+                {"ad": "Geliştirme", "tamamlandi": false},
+                {"ad": "Test", "tamamlandi": false}
+            ],
+            "metadata": {
+                "created": "2023-01-01",
+                "modified": "2023-10-15",
+                "version": "1.2"
+            }
+        };
+        
+        // JSON'ı biçimlendirilmiş göster
+        let biçimliJSON = JSON.stringify(proje, null, 2);
+        
+        // Bilgileri çıkar
+        let bilgi = "Proje: " + proje.ad + "<br>" +
+                   "Durum: " + proje.durum + "<br>" +
+                   "Bütçe: " + proje.bütçe + " TL<br>" +
+                   "Takım Üyesi 1: " + proje.takim[0].ad + " - " + proje.takim[0].rol + "<br>" +
+                   "Tamamlanan Miletaşlar: " + 
+                   proje.miletaşlar.filter(m => m.tamamlandi).length + "/" + proje.miletaşlar.length;
+        
+        document.getElementById("sonuc").innerHTML = 
+            bilgi + "<br><br>JSON:<pre>" + biçimliJSON + "</pre>";
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>4. JSON Array</title>
+</head>
+<body>
+    <h2>4. JSON Array</h2>
+    <button onclick="jsonArray()">Array Göster</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function jsonArray() {
+        let ogrenciler = [
+            {"ad": "Ahmet", "not": 85},
+            {"ad": "Mehmet", "not": 90},
+            {"ad": "Ayşe", "not": 95}
+        ];
+        
+        let cikti = "";
+        for(let i = 0; i < ogrenciler.length; i++) {
+            cikti += ogrenciler[i].ad + ": " + ogrenciler[i].not + "<br>";
+        }
+        
+        document.getElementById("sonuc").innerHTML = cikti;
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>14. JSON forEach</title>
+</head>
+<body>
+    <h2>14. JSON forEach ile İşleme</h2>
+    <button onclick="foreachJSON()">forEach ile İşle</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function foreachJSON() {
+        let sepet = [
+            {"urun": "Elma", "fiyat": 5, "adet": 3},
+            {"urun": "Armut", "fiyat": 8, "adet": 2},
+            {"urun": "Portakal", "fiyat": 6, "adet": 4}
+        ];
+        
+        let toplam = 0;
+        let cikti = "Sepet:<br>";
+        
+        sepet.forEach(function(item) {
+            let tutar = item.fiyat * item.adet;
+            cikti += item.urun + ": " + item.adet + " x " + item.fiyat + " TL = " + tutar + " TL<br>";
+            toplam += tutar;
+        });
+        
+        cikti += "<br>Toplam Tutar: " + toplam + " TL";
+        document.getElementById("sonuc").innerHTML = cikti;
+    }
+    </script>
+</body>
+</html>

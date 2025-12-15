@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>16. JSON Reduce</title>
+</head>
+<body>
+    <h2>16. JSON Reduce ile Toplama</h2>
+    <button onclick="reduceJSON()">Reduce ile Topla</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function reduceJSON() {
+        let satislar = [
+            {"ay": "Ocak", "tutar": 5000},
+            {"ay": "Şubat", "tutar": 6000},
+            {"ay": "Mart", "tutar": 7500},
+            {"ay": "Nisan", "tutar": 4500}
+        ];
+        
+        // Toplam satış tutarını hesapla
+        let toplam = satislar.reduce(function(acc, satis) {
+            return acc + satis.tutar;
+        }, 0);
+        
+        // Ortalama satış tutarını hesapla
+        let ortalama = toplam / satislar.length;
+        
+        document.getElementById("sonuc").innerHTML = 
+            "Toplam Satış: " + toplam + " TL<br>" +
+            "Ortalama Satış: " + ortalama.toFixed(2) + " TL<br>" +
+            "Ay Sayısı: " + satislar.length;
+    }
+    </script>
+</body>
+</html>

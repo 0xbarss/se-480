@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML, JavaScript ve JSON Örnekleri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .example {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #555;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            min-height: 20px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        .data-box {
+            background-color: #e8f4fd;
+            border: 1px solid #b6d7e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .user-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML, JavaScript ve JSON Örnekleri</h1>
+    
+    <!-- Örnek 1: JSON Oluşturma ve Gösterme -->
+    <div class="example">
+        <h2>1. JSON Oluşturma ve Gösterme</h2>
+        <p>JavaScript ile JSON nesnesi oluşturma ve görüntüleme.</p>
+        <button onclick="createJson()">JSON Oluştur</button>
+        <button onclick="displayJson()">JSON Göster</button>
+        <div class="result" id="jsonResult"></div>
+    </div>
+    
+    <!-- Örnek 2: JSON String'den Parse Etme -->
+    <div class="example">
+        <h2>2. JSON String'den Parse Etme</h2>
+        <p>JSON string'ini JavaScript nesnesine dönüştürme.</p>
+        <div class="data-box">
+            JSON String: {"name": "Ali", "age": 25, "city": "İstanbul"}
+        </div>
+        <button onclick="parseJsonString()">Parse Et</button>
+        <div class="result" id="parseResult"></div>
+    </div>
+    
+    <!-- Örnek 3: JavaScript Nesnesini JSON'a Dönüştürme -->
+    <div class="example">
+        <h2>3. JavaScript Nesnesini JSON'a Dönüştürme</h2>
+        <p>JavaScript nesnesini JSON string'ine dönüştürme.</p>
+        <button onclick="convertToJson()">JSON'a Dönüştür</button>
+        <div class="result" id="convertResult"></div>
+    </div>
+    
+    <!-- Örnek 4: JSON'dan Tablo Oluşturma -->
+    <div class="example">
+        <h2>4. JSON'dan Tablo Oluşturma</h2>
+        <p>JSON verisini kullanarak HTML tablosu oluşturma.</p>
+        <button onclick="createTableFromJson()">Tablo Oluştur</button>
+        <div class="result" id="tableResult"></div>
+    </div>
+    
+    <!-- Örnek 5: JSON Verisi ile Kullanıcı Kartları -->
+    <div class="example">
+        <h2>5. JSON Verisi ile Kullanıcı Kartları</h2>
+        <p>JSON'daki kullanıcı verilerini kartlar halinde görüntüleme.</p>
+        <button onclick="createUserCards()">Kullanıcı Kartlarını Göster</button>
+        <div class="result" id="userCardsResult"></div>
+    </div>
+    
+    <!-- Örnek 6: JSON Verisi Filtreleme -->
+    <div class="example">
+        <h2>6. JSON Verisi Filtreleme</h2>
+        <p>JSON verisini filtreleyerek belirli kriterlere uyanları gösterme.</p>
+        <button onclick="filterJson()">Şehri İstanbul Olanları Filtrele</button>
+        <div class="result" id="filterResult"></div>
+    </div>
+    
+    <!-- Örnek 7: JSON Verisini Düzenleme -->
+    <div class="example">
+        <h2>7. JSON Verisini Düzenleme</h2>
+        <p>JSON verisine yeni özellikler ekleme ve mevcutları değiştirme.</p>
+        <button onclick="modifyJson()">JSON'ı Düzenle</button>
+        <div class="result" id="modifyResult"></div>
+    </div>
+    
+    <!-- Örnek 8: LocalStorage ile JSON Saklama -->
+    <div class="example">
+        <h2>8. LocalStorage ile JSON Saklama</h2>
+        <p>JSON verisini tarayıcının localStorage'ında saklama ve geri yükleme.</p>
+        <button onclick="saveToLocalStorage()">LocalStorage'a Kaydet</button>
+        <button onclick="loadFromLocalStorage()">LocalStorage'dan Yükle</button>
+        <div class="result" id="storageResult"></div>
+    </div>
+    
+    <!-- Örnek 9: JSON Verisini Sıralama -->
+    <div class="example">
+        <h2>9. JSON Verisini Sıralama</h2>
+        <p>JSON dizisini belirli bir özelliğe göre sıralama.</p>
+        <button onclick="sortJsonByName()">İsime Göre Sırala</button>
+        <button onclick="sortJsonByAge()">Yaşa Göre Sırala</button>
+        <div class="result" id="sortResult"></div>
+    </div>
+    
+    <!-- Örnek 10: Fetch API ile JSON Verisi Çekme -->
+    <div class="example">
+        <h2>10. Fetch API ile JSON Verisi Çekme</h2>
+        <p>Harici bir kaynaktan JSON verisi çekme (simüle edilmiştir).</p>
+        <button onclick="fetchJsonData()">JSON Verisi Çek</button>
+        <div class="result" id="fetchResult"></div>
+    </div>
+
+    <script>
+        // Örnek 1: JSON Oluşturma ve Gösterme
+        let exampleJson = {
+            "name": "Ahmet",
+            "age": 30,
+            "city": "Ankara",
+            "hobbies": ["futbol", "müzik", "kitap"],
+            "isStudent": false
+        };
+        
+        function createJson() {
+            // JSON nesnesi oluşturma
+            exampleJson = {
+                "id": 1,
+                "name": "Mehmet",
+                "age": 28,
+                "email": "mehmet@example.com",
+                "skills": ["JavaScript", "HTML", "CSS"],
+                "isActive": true
+            };
+            document.getElementById('jsonResult').innerHTML = "JSON nesnesi oluşturuldu!";
+        }
+        
+        function displayJson() {
+            // JSON'ı biçimlendirilmiş şekilde gösterme
+            document.getElementById('jsonResult').innerHTML = 
+                `<pre>${JSON.stringify(exampleJson, null, 2)}</pre>`;
+        }
+        
+        // Örnek 2: JSON String'den Parse Etme
+        function parseJsonString() {
+            const jsonString = '{"name": "Ali", "age": 25, "city": "İstanbul"}';
+            try {
+                const parsedObject = JSON.parse(jsonString);
+                document.getElementById('parseResult').innerHTML = 
+                    `Ad: ${parsedObject.name}<br>
+                     Yaş: ${parsedObject.age}<br>
+                     Şehir: ${parsedObject.city}`;
+            } catch (error) {
+                document.getElementById('parseResult').innerHTML = 
+                    "JSON parse hatası: " + error.message;
+            }
+        }
+        
+        // Örnek 3: JavaScript Nesnesini JSON'a Dönüştürme
+        function convertToJson() {
+            const person = {
+                firstName: "Ayşe",
+                lastName: "Yılmaz",
+                birthYear: 1995,
+                calculateAge: function() {
+                    return new Date().getFullYear() - this.birthYear;
+                }
+            };
+            
+            // Fonksiyonlar JSON'a dönüştürülmez
+            const jsonString = JSON.stringify(person);
+            document.getElementById('convertResult').innerHTML = 
+                `<pre>${jsonString}</pre>
+                 <p>Not: calculateAge fonksiyonu JSON'da görünmez.</p>`;
+        }
+        
+        // Örnek 4: JSON'dan Tablo Oluşturma
+        function createTableFromJson() {
+            const employees = [
+                {"id": 1, "name": "Ali", "position": "Yazılım Geliştirici", "salary": 5000},
+                {"id": 2, "name": "Veli", "position": "Tasarımcı", "salary": 4000},
+                {"id": 3, "name": "Zeynep", "position": "Proje Yöneticisi", "salary": 6000},
+                {"id": 4, "name": "Fatma", "position": "Analist", "salary": 4500}
+            ];
+            
+            let tableHTML = '<table><tr><th>ID</th><th>Ad</th><th>Pozisyon</th><th>Maaş</th></tr>';
+            
+            employees.forEach(employee => {
+                tableHTML += `<tr>
+                    <td>${employee.id}</td>
+                    <td>${employee.name}</td>
+                    <td>${employee.position}</td>
+                    <td>${employee.salary} TL</td>
+                </tr>`;
+            });
+            
+            tableHTML += '</table>';
+            document.getElementById('tableResult').innerHTML = tableHTML;
+        }
+        
+        // Örnek 5: JSON Verisi ile Kullanıcı Kartları
+        function createUserCards() {
+            const users = [
+                {
+                    "id": 1,
+                    "name": "Ahmet Demir",
+                    "email": "ahmet@example.com",
+                    "city": "İstanbul",
+                    "avatar": "https://i.pravatar.cc/100?img=1"
+                },
+                {
+                    "id": 2,
+                    "name": "Mehmet Kaya",
+                    "email": "mehmet@example.com",
+                    "city": "Ankara",
+                    "avatar": "https://i.pravatar.cc/100?img=2"
+                },
+                {
+                    "id": 3,
+                    "name": "Ayşe Yıldız",
+                    "email": "ayse@example.com",
+                    "city": "İzmir",
+                    "avatar": "https://i.pravatar.cc/100?img=3"
+                }
+            ];
+            
+            let cardsHTML = '';
+            users.forEach(user => {
+                cardsHTML += `
+                <div class="user-card">
+                    <img src="${user.avatar}" alt="${user.name}" style="float:left; margin-right:15px; border-radius:50%;">
+                    <h3>${user.name}</h3>
+                    <p><strong>E-posta:</strong> ${user.email}</p>
+                    <p><strong>Şehir:</strong> ${user.city}</p>
+                </div>`;
+            });
+            
+            document.getElementById('userCardsResult').innerHTML = cardsHTML;
+        }
+        
+        // Örnek 6: JSON Verisi Filtreleme
+        function filterJson() {
+            const people = [
+                {"name": "Ali", "age": 25, "city": "İstanbul"},
+                {"name": "Veli", "age": 30, "city": "Ankara"},
+                {"name": "Ayşe", "age": 28, "city": "İstanbul"},
+                {"name": "Fatma", "age": 22, "city": "İzmir"},
+                {"name": "Mehmet", "age": 35, "city": "İstanbul"}
+            ];
+            
+            // Şehri İstanbul olanları filtrele
+            const filteredPeople = people.filter(person => person.city === "İstanbul");
+            
+            let resultHTML = '<h3>Şehri İstanbul Olanlar:</h3><ul>';
+            filteredPeople.forEach(person => {
+                resultHTML += `<li>${person.name} (${person.age} yaş)</li>`;
+            });
+            resultHTML += '</ul>';
+            
+            document.getElementById('filterResult').innerHTML = resultHTML;
+        }
+        
+        // Örnek 7: JSON Verisini Düzenleme
+        function modifyJson() {
+            let product = {
+                "id": 101,
+                "name": "Laptop",
+                "price": 5000
+            };
+            
+            let resultHTML = "<h3>Orijinal JSON:</h3>";
+            resultHTML += `<pre>${JSON.stringify(product, null, 2)}</pre>`;
+            
+            // JSON'a yeni özellik ekleme
+            product.brand = "ExampleBrand";
+            product.stock = 15;
+            product.tags = ["teknoloji", "bilgisayar", "elektronik"];
+            
+            // Mevcut özelliği değiştirme
+            product.price = 4500;
+            
+            resultHTML += "<h3>Düzenlenmiş JSON:</h3>";
+            resultHTML += `<pre>${JSON.stringify(product, null, 2)}</pre>`;
+            
+            document.getElementById('modifyResult').innerHTML = resultHTML;
+        }
+        
+        // Örnek 8: LocalStorage ile JSON Saklama
+        function saveToLocalStorage() {
+            const settings = {
+                "theme": "dark",
+                "language": "tr",
+                "notifications": true,
+                "fontSize": 14
+            };
+            
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+            document.getElementById('storageResult').innerHTML = 
+                "Ayarlar localStorage'a kaydedildi!";
+        }
+        
+        function loadFromLocalStorage() {
+            const savedSettings = localStorage.getItem('appSettings');
+            
+            if (savedSettings) {
+                const settings = JSON.parse(savedSettings);
+                let resultHTML = "<h3>LocalStorage'dan Yüklenen Ayarlar:</h3>";
+                resultHTML += `<pre>${JSON.stringify(settings, null, 2)}</pre>`;
+                
+                resultHTML += "<h3>Kullanım:</h3>";
+                resultHTML += `<ul>
+                    <li>Tema: ${settings.theme}</li>
+                    <li>Dil: ${settings.language}</li>
+                    <li>Bildirimler: ${settings.notifications ? 'Açık' : 'Kapalı'}</li>
+                    <li>Yazı Boyutu: ${settings.fontSize}px</li>
+                </ul>`;
+                
+                document.getElementById('storageResult').innerHTML = resultHTML;
+            } else {
+                document.getElementById('storageResult').innerHTML = 
+                    "LocalStorage'da kayıtlı ayar bulunamadı!";
+            }
+        }
+        
+        // Örnek 9: JSON Verisini Sıralama
+        function sortJsonByName() {
+            const students = [
+                {"name": "Zeynep", "age": 22, "grade": 85},
+                {"name": "Ahmet", "age": 24, "grade": 90},
+                {"name": "Mehmet", "age": 23, "grade": 75},
+                {"name": "Ayşe", "age": 21, "grade": 95}
+            ];
+            
+            // İsme göre sırala (A-Z)
+            const sorted = [...students].sort((a, b) => a.name.localeCompare(b.name));
+            
+            displaySortedResults(sorted, "İsme Göre Sıralı (A-Z):");
+        }
+        
+        function sortJsonByAge() {
+            const students = [
+                {"name": "Zeynep", "age": 22, "grade": 85},
+                {"name": "Ahmet", "age": 24, "grade": 90},
+                {"name": "Mehmet", "age": 23, "grade": 75},
+                {"name": "Ayşe", "age": 21, "grade": 95}
+            ];
+            
+            // Yaşa göre sırala (küçükten büyüğe)
+            const sorted = [...students].sort((a, b) => a.age - b.age);
+            
+            displaySortedResults(sorted, "Yaşa Göre Sıralı (Küçükten Büyüğe):");
+        }
+        
+        function displaySortedResults(data, title) {
+            let resultHTML = `<h3>${title}</h3><table><tr><th>Ad</th><th>Yaş</th><th>Not</th></tr>`;
+            
+            data.forEach(student => {
+                resultHTML += `<tr>
+                    <td>${student.name}</td>
+                    <td>${student.age}</td>
+                    <td>${student.grade}</td>
+                </tr>`;
+            });
+            
+            resultHTML += '</table>';
+            document.getElementById('sortResult').innerHTML = resultHTML;
+        }
+        
+        // Örnek 10: Fetch API ile JSON Verisi Çekme
+        function fetchJsonData() {
+            // Gerçek bir API çağrısı yerine simüle ediyoruz
+            document.getElementById('fetchResult').innerHTML = 
+                "Veriler yükleniyor...";
+            
+            // Fake API response simülasyonu
+            setTimeout(() => {
+                // Gerçek bir API'den gelen JSON verisi simülasyonu
+                const fakeApiResponse = {
+                    "status": "success",
+                    "data": [
+                        {"id": 1, "title": "JavaScript Öğren", "completed": false},
+                        {"id": 2, "title": "JSON Kullanımı", "completed": true},
+                        {"id": 3, "title": "API Entegrasyonu", "completed": false}
+                    ],
+                    "count": 3,
+                    "timestamp": new Date().toISOString()
+                };
+                
+                let resultHTML = "<h3>Fetch API ile Alınan Veri:</h3>";
+                resultHTML += `<pre>${JSON.stringify(fakeApiResponse, null, 2)}</pre>`;
+                
+                resultHTML += "<h3>Görevler:</h3><ul>";
+                fakeApiResponse.data.forEach(item => {
+                    const status = item.completed ? "✓ Tamamlandı" : "○ Devam Ediyor";
+                    resultHTML += `<li>${item.title} - ${status}</li>`;
+                });
+                resultHTML += "</ul>";
+                
+                document.getElementById('fetchResult').innerHTML = resultHTML;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

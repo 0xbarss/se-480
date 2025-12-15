@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>7. JSON Filtreleme</title>
+</head>
+<body>
+    <h2>7. JSON Filtreleme</h2>
+    <button onclick="filtrele()">Fiyatı 1000'den Fazla Olanları Filtrele</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function filtrele() {
+        let urunler = [
+            {"ad": "Telefon", "fiyat": 8000},
+            {"ad": "Tablet", "fiyat": 5000},
+            {"ad": "Kulaklık", "fiyat": 800},
+            {"ad": "Laptop", "fiyat": 15000}
+        ];
+        
+        let filtrelenmis = urunler.filter(function(urun) {
+            return urun.fiyat > 1000;
+        });
+        
+        let cikti = "Fiyatı 1000 TL'den fazla olanlar:<br>";
+        filtrelenmis.forEach(function(u) {
+            cikti += u.ad + ": " + u.fiyat + " TL<br>";
+        });
+        
+        document.getElementById("sonuc").innerHTML = cikti;
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>11. JSON Manipülasyonu</title>
+</head>
+<body>
+    <h2>11. JSON Manipülasyonu</h2>
+    <button onclick="manipulateJSON()">JSON'ı Düzenle</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function manipulateJSON() {
+        let araba = {
+            "marka": "Honda",
+            "model": "Civic",
+            "yil": 2020
+        };
+        
+        let ilk = JSON.stringify(araba);
+        
+        // Özellik ekle
+        araba.renk = "Kırmızı";
+        araba.fiyat = 350000;
+        
+        // Özellik sil
+        delete araba.yil;
+        
+        // Özellik değiştir
+        araba.marka = "Toyota";
+        
+        let son = JSON.stringify(araba);
+        
+        document.getElementById("sonuc").innerHTML = 
+            "Başlangıç: " + ilk + "<br><br>" +
+            "Son Hali: " + son;
+    }
+    </script>
+</body>
+</html>

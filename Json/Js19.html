@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>19. JSON ve Tarih</title>
+</head>
+<body>
+    <h2>19. JSON ve Tarih İşlemleri</h2>
+    <button onclick="jsonTarih()">Tarih ile JSON</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function jsonTarih() {
+        let olay = {
+            "ad": "Toplantı",
+            "tarih": new Date(),
+            "katilimcilar": ["Ali", "Veli", "Ayşe"]
+        };
+        
+        // JSON'a çevir (tarih string'e dönüşür)
+        let jsonString = JSON.stringify(olay);
+        
+        // JSON'dan geri çevir
+        let geriCevir = JSON.parse(jsonString);
+        
+        // Tarihi geri dönüştür
+        geriCevir.tarih = new Date(geriCevir.tarih);
+        
+        document.getElementById("sonuc").innerHTML = 
+            "JSON String: <pre>" + jsonString + "</pre><br>" +
+            "Geri Çevrilen Tarih: " + geriCevir.tarih.toLocaleString() + "<br>" +
+            "Katılımcılar: " + geriCevir.katilimcilar.join(", ");
+    }
+    </script>
+</body>
+</html>

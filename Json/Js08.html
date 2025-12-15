@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>8. JSON Sıralama</title>
+</head>
+<body>
+    <h2>8. JSON Sıralama</h2>
+    <button onclick="adaGoreSirala()">Ada Göre Sırala</button>
+    <button onclick="fiyataGoreSirala()">Fiyata Göre Sırala</button>
+    <div id="sonuc"></div>
+
+    <script>
+    let urunler = [
+        {"ad": "Bilgisayar", "fiyat": 12000},
+        {"ad": "Tablet", "fiyat": 5000},
+        {"ad": "Telefon", "fiyat": 8000},
+        {"ad": "Mouse", "fiyat": 300}
+    ];
+    
+    function adaGoreSirala() {
+        let sirali = [...urunler].sort(function(a, b) {
+            return a.ad.localeCompare(b.ad);
+        });
+        
+        sonucuGoster(sirali, "Ada Göre Sıralı:");
+    }
+    
+    function fiyataGoreSirala() {
+        let sirali = [...urunler].sort(function(a, b) {
+            return a.fiyat - b.fiyat;
+        });
+        
+        sonucuGoster(sirali, "Fiyata Göre Sıralı (Artan):");
+    }
+    
+    function sonucuGoster(dizi, baslik) {
+        let cikti = baslik + "<br>";
+        dizi.forEach(function(u) {
+            cikti += u.ad + " - " + u.fiyat + " TL<br>";
+        });
+        document.getElementById("sonuc").innerHTML = cikti;
+    }
+    </script>
+</body>
+</html>

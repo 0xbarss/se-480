@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>10. AJAX ile JSON</title>
+</head>
+<body>
+    <h2>10. AJAX ile JSON Getirme</h2>
+    <button onclick="ajaxJSON()">JSON Getir (Simüle)</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function ajaxJSON() {
+        document.getElementById("sonuc").innerHTML = "JSON yükleniyor...";
+        
+        // Fake AJAX çağrısı
+        setTimeout(function() {
+            let fakeResponse = {
+                "status": "success",
+                "data": [
+                    {"id": 1, "task": "JavaScript çalış", "done": true},
+                    {"id": 2, "task": "JSON öğren", "done": true},
+                    {"id": 3, "task": "Proje yap", "done": false}
+                ]
+            };
+            
+            let cikti = "AJAX Yanıtı:<br>";
+            fakeResponse.data.forEach(function(gorev) {
+                cikti += gorev.id + ". " + gorev.task + 
+                       " - " + (gorev.done ? "✓ Tamamlandı" : "○ Bekliyor") + "<br>";
+            });
+            
+            document.getElementById("sonuc").innerHTML = cikti;
+        }, 1000);
+    }
+    </script>
+</body>
+</html>

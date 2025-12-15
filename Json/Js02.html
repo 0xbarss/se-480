@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2. JSON Parse</title>
+</head>
+<body>
+    <h2>2. JSON Parse</h2>
+    <button onclick="jsonParse()">Parse Et</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function jsonParse() {
+        let jsonString = '{"urun":"Telefon","fiyat":8000,"marka":"Samsung"}';
+        let urun = JSON.parse(jsonString);
+        
+        document.getElementById("sonuc").innerHTML = 
+            "Ürün: " + urun.urun + "<br>" +
+            "Fiyat: " + urun.fiyat + " TL<br>" +
+            "Marka: " + urun.marka;
+    }
+    </script>
+</body>
+</html>

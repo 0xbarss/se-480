@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3. JSON Stringify</title>
+</head>
+<body>
+    <h2>3. JSON Stringify</h2>
+    <button onclick="jsonStringify()">Stringify Yap</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function jsonStringify() {
+        let araba = {
+            marka: "Toyota",
+            model: "Corolla",
+            yil: 2022,
+            fiyat: 450000
+        };
+        
+        let jsonString = JSON.stringify(araba);
+        document.getElementById("sonuc").innerHTML = 
+            "<pre>" + jsonString + "</pre>";
+    }
+    </script>
+</body>
+</html>

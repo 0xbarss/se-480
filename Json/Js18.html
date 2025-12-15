@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>18. JSON Doğrulama</title>
+</head>
+<body>
+    <h2>18. JSON Doğrulama</h2>
+    <button onclick="dogrula()">JSON Doğrula</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function dogrula() {
+        let gecerliJSON = '{"ad": "Ali", "yas": 25}';
+        let gecersizJSON = '{ad: "Ali", yas: 25}'; // Tırnak eksik
+        
+        try {
+            let obj1 = JSON.parse(gecerliJSON);
+            document.getElementById("sonuc").innerHTML = 
+                "Geçerli JSON: Başarıyla parse edildi<br>" +
+                "Ad: " + obj1.ad + ", Yaş: " + obj1.yas;
+        } catch(e) {
+            document.getElementById("sonuc").innerHTML = 
+                "Geçerli JSON hatası: " + e.message;
+        }
+        
+        try {
+            let obj2 = JSON.parse(gecersizJSON);
+        } catch(e) {
+            document.getElementById("sonuc").innerHTML += 
+                "<br><br>Geçersiz JSON hatası: " + e.message;
+        }
+    }
+    </script>
+</body>
+</html>

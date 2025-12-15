@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.js"></script>
+<script>
+function appendText()
+{
+var txt1="<p>Colonel</p>";              // Create text with HTML
+var txt2=$("<p></p>").text("Captain");  // Create text with jQuery
+var txt3=document.createElement("p");
+txt3.innerHTML="Sergeant";               // Create text with DOM
+$("body").append(txt1,txt2,txt3);        // Append new elements
+}
+</script>
+</head>
+<body>
+
+<p>You are in the army now</p>
+<button onclick="appendText()">Append text</button>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>13. JSON'da Arama</title>
+</head>
+<body>
+    <h2>13. JSON'da Arama</h2>
+    Arama: <input type="text" id="arama" placeholder="İsim ara">
+    <button onclick="ara()">Ara</button>
+    <div id="sonuc"></div>
+
+    <script>
+    let kisiler = [
+        {"id": 1, "ad": "Ahmet", "sehir": "İstanbul"},
+        {"id": 2, "ad": "Mehmet", "sehir": "Ankara"},
+        {"id": 3, "ad": "Ayşe", "sehir": "İzmir"},
+        {"id": 4, "ad": "Fatma", "sehir": "İstanbul"},
+        {"id": 5, "ad": "Ali", "sehir": "Bursa"}
+    ];
+    
+    function ara() {
+        let aramaKelime = document.getElementById("arama").value.toLowerCase();
+        let bulunanlar = kisiler.filter(function(kisi) {
+            return kisi.ad.toLowerCase().includes(aramaKelime);
+        });
+        
+        let cikti = "";
+        if(bulunanlar.length > 0) {
+            bulunanlar.forEach(function(k) {
+                cikti += k.ad + " - " + k.sehir + "<br>";
+            });
+        } else {
+            cikti = "Sonuç bulunamadı";
+        }
+        
+        document.getElementById("sonuc").innerHTML = cikti;
+    }
+    </script>
+</body>
+</html>

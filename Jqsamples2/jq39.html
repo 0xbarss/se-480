@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("p").append(" <b>New Faculty</b>");
+  });
+
+  $("#btn2").click(function(){
+    $("ol").append("<li>New department</li>");
+  });
+});
+</script>
+</head>
+
+<body>
+<p>Hello Izmir Ekonomi Universitesi</p>
+<p>Hello Faculty of Engineering</p>
+<ol>
+<li>Software</li>
+<li>Computer</li>
+<li>Industrial</li>
+</ol>
+<button id="btn1">Append to text</button>
+<button id="btn2">Append to list</button>
+</body>
+</html>
+

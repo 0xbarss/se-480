@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>15. JSON Map</title>
+</head>
+<body>
+    <h2>15. JSON Map ile Dönüştürme</h2>
+    <button onclick="mapJSON()">Map ile Dönüştür</button>
+    <div id="sonuc"></div>
+
+    <script>
+    function mapJSON() {
+        let urunler = [
+            {"ad": "Laptop", "fiyat": 10000},
+            {"ad": "Tablet", "fiyat": 5000},
+            {"ad": "Telefon", "fiyat": 8000}
+        ];
+        
+        // Fiyatlara KDV ekle (%18)
+        let kdvliFiyatlar = urunler.map(function(urun) {
+            return {
+                ad: urun.ad,
+                fiyat: urun.fiyat,
+                kdvliFiyat: urun.fiyat * 1.18
+            };
+        });
+        
+        let cikti = "";
+        kdvliFiyatlar.forEach(function(u) {
+            cikti += u.ad + ": " + u.fiyat + " TL -> KDV'li: " + u.kdvliFiyat.toFixed(2) + " TL<br>";
+        });
+        
+        document.getElementById("sonuc").innerHTML = cikti;
+    }
+    </script>
+</body>
+</html>

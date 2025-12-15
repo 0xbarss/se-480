@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").remove(".italic");
+  });
+});
+</script>
+</head>
+<body>
+
+<p>Izmir Ekonomi Universitesi</p>
+<p class="italic"><i>Mühendislik Fakültesi</i></p>
+<p><i>Bilgisayar Mühendisliği Bölümü</i></p>
+<p class="italic"><i>Yazılım Mühendisliği Bölümü</i></p>
+<p class="ditalic"><b>Makina Mühendisliği Bölümü</b></p>
+<button>Remove all p elements with class="italic"</button>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    alert("Background color = " + $("p").css("background-color"));
+  });
+});
+</script>
+</head>
+
+<body>
+<h2>Izmir</h2>
+<p style="background-color:#ff0000">Izmir Ekonomi Universitesi</p>
+<p style="background-color:#00ff00">Muhendislik Fakültesi</p>
+<p style="background-color:#0000ff">Yazılım Mühendisliği Bölümü</p>
+<button>Return background-color of p</button>
+</body>
+</html>
+
