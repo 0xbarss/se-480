@@ -1,0 +1,3 @@
+<lastname lang="EN">Smith</lastname>
+
+<xs:attribute name="lang" type="xs:string"/>

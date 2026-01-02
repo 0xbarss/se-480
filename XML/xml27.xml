@@ -1,0 +1,3 @@
+<xs:attribute name="lang" type="xs:string" default="EN"/>
+
+<xs:attribute name="lang" type="xs:string" fixed="EN"/>

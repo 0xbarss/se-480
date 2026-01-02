@@ -1,0 +1,16 @@
+<messages>
+<mail>
+  <to>Meltem</to>
+  <from>Senem</from>
+  <date>2020-02-23</date>
+  <heading>Reminder</heading>
+  <body>Don't forget about SE480 today!</body>
+</mail>
+<mail>
+  <to>Ibrahim</to>
+  <from>Erkan</from>
+  <date>2019-06-18</date>
+  <heading>Urgent</heading>
+  <body>Don't forget about the summer school</body>
+</mail>
+</messages>

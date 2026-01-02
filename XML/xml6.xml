@@ -1,0 +1,11 @@
+<mail>
+  <to>Meltem</to>
+  <from>Senem</from>
+  <date>
+    <year>2008</year>
+    <month>02</month>
+    <day>23</day>
+  </date>
+  <heading>Reminder</heading>
+  <body>Don't forget about SE480 today!</body>
+</mail>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mail
+[
+<!ELEMENT mail (to,from,heading,body)>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT body (#PCDATA)>
+]>
+<mail>
+  <to>Meltem</to>
+  <from>Senem</from>
+  <heading>Reminder</heading>
+  <body>Don't forget about SE480 today!</body>
+</mail>
